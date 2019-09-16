@@ -1,6 +1,15 @@
 Today:
-  test
+  Do stuff
 
-Tommorow:
-  more tests
-  and one more test
+Tomorrow:
+  Do some different stuff
+
+Weekend:
+  My really long plan to do on weekends so I don't have to do that after
+
+Some other time:
+  Things I totaly don't wanna do any time soon
+  Even more things like that
+
+10 years from now:
+  Hopefully alive
