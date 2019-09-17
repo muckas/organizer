@@ -49,7 +49,7 @@ Running a server from the command line is not advisable, so I am using "supervis
 
 Make a config file in /etc/supervisor/conf.d/
 ```
-[program:microblog]
+[program:tasks]
 command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 microblog:app
 directory=/path/to/workdir/
 user=youruser
