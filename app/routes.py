@@ -1,3 +1,4 @@
+from flask import render_template
 from app import app
 
 
@@ -10,13 +11,4 @@ def index():
   tasklist = ''
   for line in tasks:
     tasklist += (f'<pre class="tab">{line}</pre>')
-  return f'''
-  <html>
-    <head>
-      <title>Tasks</title>
-    </head>
-    <body>
-      {tasklist}
-    </body>
-  <html>
-  '''
+  return render_template('index.html', title='Tasks', tasklist=tasklist)
