@@ -5,16 +5,18 @@ Web interface task management app
 
 ### Requirements
 
+On some systems its just "python" instead of "python3"
 ```
-python
-python-pip
+python3
+python3-venv
+python3-pip
 ```
 
 ### Virtual environment
 
 Createing virtual environment
 ```
-python -m venv venv
+python3 -m venv venv
 ```
 Starting virtual environment
 ```
@@ -35,10 +37,36 @@ Runs the server on localhost:5000
 
 ### Production server
 ```
-gunicorn -b localhost:5000 app:app
+gunicorn -b :5000 app:app
 ```
 Runs WSGI server accessible from outside by yourdomain.com:5000
 
 ## Deployment
 
+### On linux
 
+#####Running a server from the command line is not advisable, so I am using "supervisor".
+
+Make a config file in /etc/supervisor/conf.d/
+```
+[program:microblog]
+command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 microblog:app
+directory=/path/to/workdir/
+user=youruser
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+```
+Change path and user, save it and reload supervisor
+```
+sudo supervisorctl reload
+```
+Now, after setting up ProxyPass to gunicorn server it's all done
+
+## Deploying updates
+For updating just pull the new vertion and restart the app
+```
+git pull
+sudo supervisorctl restart tasks
+```
