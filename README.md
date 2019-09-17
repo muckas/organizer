@@ -18,7 +18,7 @@ python -m venv venv
 ```
 Starting virtual environment
 ```
-source venv/bit/activate
+source venv/bin/activate
 ```
 Installing python packeges in virtual invironment
 ```
