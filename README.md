@@ -39,13 +39,13 @@ Runs the server on localhost:5000
 ```
 gunicorn -b :5000 app:app
 ```
-Runs WSGI server accessible from outside by yourdomain.com:5000
+Runs WSGI server accessible from outside by on port 5000
 
 ## Deployment
 
 ### On linux
 
-#####Running a server from the command line is not advisable, so I am using "supervisor".
+Running a server from the command line is not advisable, so I am using "supervisor".
 
 Make a config file in /etc/supervisor/conf.d/
 ```
