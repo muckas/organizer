@@ -1,10 +1,14 @@
 <html>
     <head>
+        {% if title %}
         <title>{{ title }}</title>
+        {% else %}
+        <title>Tasks</title>
+        {% endif %}
     </head>
     <body>
       {% for task in tasks %}
       <pre>{{ task }}</pre>
-      {%endfor%}
+      {% endfor %}
     </body>
 </html>
