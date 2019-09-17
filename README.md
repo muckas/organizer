@@ -20,7 +20,7 @@ Starting virtual environment
 ```
 source venv/bin/activate
 ```
-Installing python packeges in virtual invironment
+Installing python packages in virtual invironment
 ```
 pip install -r requirements.txt
 ```
