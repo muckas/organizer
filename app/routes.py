@@ -1,8 +1,9 @@
-from flask import Flask
-app = Flask(__name__)
+from app import app
+
 
 @app.route('/')
-def main():
+@app.route('/index')
+def index():
   tasks = None
   with open('tasks.txt', 'r+') as f:
     tasks = f.readlines()
@@ -10,6 +11,3 @@ def main():
   for line in tasks:
     result += (f'<pre class="tab">{line}</pre>')
   return result
-
-if __name__ == '__main__':
-  app.run()
