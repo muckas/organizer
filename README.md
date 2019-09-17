@@ -12,11 +12,15 @@ python-pip
 
 ### Virtual environment
 
-Createing venv
+Createing virtual environment
 ```
 python -m venv venv
 ```
-Starting venv
+Starting virtual environment
+```
+source venv/bit/activate
+```
+Installing python packeges in virtual invironment
 ```
 pip install -r requirements.txt
 ```
