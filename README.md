@@ -30,16 +30,18 @@ pip install -r requirements.txt
 ## Testing
 
 ### Development server
+Export flask app variable and run
 ```
-python app.py
+export FLASK_APP=tasks.py
+flask run
 ```
 Runs the server on localhost:5000
 
 ### Production server
 ```
-gunicorn -b :5000 app:app
+gunicorn -b :5000 tasks:app
 ```
-Runs WSGI server accessible from outside by on port 5000
+Runs WSGI server accessible from outside on port 5000
 
 ## Deployment
 
@@ -50,7 +52,7 @@ Running a server from the command line is not advisable, so I am using "supervis
 Make a config file in /etc/supervisor/conf.d/
 ```
 [program:tasks]
-command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 app:app
+command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 tasks:app
 directory=/path/to/workdir/
 user=youruser
 autostart=true
