@@ -50,7 +50,7 @@ Running a server from the command line is not advisable, so I am using "supervis
 Make a config file in /etc/supervisor/conf.d/
 ```
 [program:tasks]
-command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 microblog:app
+command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 app:app
 directory=/path/to/workdir/
 user=youruser
 autostart=true
@@ -65,7 +65,7 @@ sudo supervisorctl reload
 Now, after setting up ProxyPass to gunicorn server it's all done
 
 ## Deploying updates
-For updating just pull the new vertion and restart the app
+For updating just pull the new version and restart the app
 ```
 git pull
 sudo supervisorctl restart tasks
