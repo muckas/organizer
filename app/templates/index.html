@@ -1,14 +1,7 @@
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }}</title>
-        {% else %}
-        <title>Tasks</title>
-        {% endif %}
-    </head>
-    <body>
-      {% for task in tasks %}
-      <pre>{{ task }}</pre>
-      {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for task in tasks %}
+  <pre>{{ task }}</pre>
+  {% endfor %}
+{% endblock %}
