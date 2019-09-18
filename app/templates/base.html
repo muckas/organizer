@@ -8,8 +8,8 @@
     </head>
     <body>
       Organizer:
-      <a href='/login'>Login</a>
-      <a href='/tasks'>Tasks</a>
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('tasks') }}">Tasks</a>
       <hr>
       {% with messages = get_flashed_messages() %}
       {% if messages %}
