@@ -3,9 +3,9 @@ from app import app
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/tasks')
 def index():
   tasks = None
   with open('tasks.txt', 'r+') as f:
     tasks = f.readlines()
-  return render_template('index.html', title='Tasks', tasks=tasks)
+  return render_template('tasks.html', title='Tasks', tasks=tasks)

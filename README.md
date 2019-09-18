@@ -1,5 +1,5 @@
-# tasks
-Web interface task management app
+# Organizer
+Web interface organizer app
 
 ## Installation
 
@@ -32,14 +32,14 @@ pip install -r requirements.txt
 ### Development server
 Export flask app variable and run
 ```
-export FLASK_APP=tasks.py
+export FLASK_APP=organizer.py
 flask run
 ```
 Runs the server on localhost:5000
 
 ### Production server
 ```
-gunicorn -b :5000 tasks:app
+gunicorn -b :5000 organizer:app
 ```
 Runs WSGI server accessible from outside on port 5000
 
@@ -51,8 +51,8 @@ Running a server from the command line is not advisable, so I am using "supervis
 
 Make a config file in /etc/supervisor/conf.d/
 ```
-[program:tasks]
-command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 tasks:app
+[program:organizer]
+command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 organizer:app
 directory=/path/to/workdir/
 user=youruser
 autostart=true
@@ -70,5 +70,5 @@ Now, after setting up ProxyPass to gunicorn server it's all done
 For updating just pull the new version and restart the app
 ```
 git pull
-sudo supervisorctl restart tasks
+sudo supervisorctl restart organizer
 ```
