@@ -10,7 +10,15 @@ def tasks():
   tasks = None
   with open('tasks.txt', 'r+') as f:
     tasks = f.readlines()
-  return render_template('tasks.html', title='Tasks', tasks=tasks)
+  timeframes = []
+  timeframe = tasks[0]
+  for task in tasks[1:]:
+    if task == '\n':
+      timeframes.append(timeframe)
+      timeframe = ''
+    else:
+      timeframe += task
+  return render_template('tasks.html', title='Tasks', timeframes=timeframes)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
