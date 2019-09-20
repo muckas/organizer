@@ -67,10 +67,10 @@ sudo supervisorctl reload
 Now, after setting up ProxyPass to gunicorn server it's all done
 
 ## Deploying updates
-For updating just pull the new version and restart the app
+For updating, pull lstest release from master, install pip requirements and restart the app
 ```
 git pull
 source venv/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 sudo supervisorctl restart organizer
 ```
