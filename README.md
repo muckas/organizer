@@ -70,5 +70,7 @@ Now, after setting up ProxyPass to gunicorn server it's all done
 For updating just pull the new version and restart the app
 ```
 git pull
+source venv/bin/activate
+pip install requirements.txt
 sudo supervisorctl restart organizer
 ```
