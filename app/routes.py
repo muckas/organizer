@@ -7,7 +7,7 @@ from app import app
 @app.route('/tasks')
 def tasks():
   tasks = None
-  with open('tasks.txt', 'r+') as f:
+  with open('tasks.txt', 'r') as f:
     tasks = f.readlines()
   timeframes = []
   timeframe = tasks[0]
@@ -17,4 +17,5 @@ def tasks():
       timeframe = ''
     else:
       timeframe += task
+  timeframes.append(timeframe)
   return render_template('tasks.html', title='Tasks', timeframes=timeframes)
