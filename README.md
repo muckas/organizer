@@ -47,12 +47,20 @@ Runs WSGI server accessible from outside on port 5000
 
 ### On linux
 
-Running a server from the command line is not advisable, so I am using "supervisor".
+Edit config.cfg
+```
+SECRET_KEY - a key for scrf token
+BASIC_AUTH_USERNAME - authentication username
+BASIC_AUTH_PASSWORD - authentication password
+BASIC_AUTH_FORCE - True to use authentication, False to disable it
+```
+
+Run WSGI server using supervisor
 
 Make a config file in /etc/supervisor/conf.d/
 ```
 [program:organizer]
-command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 -w 4 organizer:app
+command=/path/to/workdir/venv/bin/gunicorn -b localhost:5000 organizer:app
 directory=/path/to/workdir/
 user=youruser
 autostart=true
