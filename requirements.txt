@@ -1,6 +1,8 @@
 Click==7.0
+configparser==4.0.2
 dominate==2.4.0
 Flask==1.1.1
+Flask-BasicAuth==0.2.0
 Flask-Bootstrap==3.3.7.1
 Flask-WTF==0.14.2
 gunicorn==19.9.0
