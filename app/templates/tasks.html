@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">
+      <a href={{ url_for('edit_tasks') }}>Edit list</a>
+    </button>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Lists
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        {% for file in files %}
+        <li><a href={{ url_for('tasks',task=file) }}>{{ file }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   {% for timeframe in timeframes %}
   <pre>{{ timeframe }}</pre>
   {% endfor %}
