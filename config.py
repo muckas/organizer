@@ -12,7 +12,7 @@ else:
     configParser.write(conf)
 
 class Config(object):
-  SECRET_KEY = configParser.get('Settings', 'SECRET_KEY')
-  BASIC_AUTH_USERNAME = configParser.get('Settings', 'BASIC_AUTH_USERNAME')
-  BASIC_AUTH_PASSWORD = configParser.get('Settings', 'BASIC_AUTH_PASSWORD')
-  BASIC_AUTH_FORCE = configParser.get('Settings', 'BASIC_AUTH_FORCE')
+  SECRET_KEY = configParser.get('Security', 'SECRET_KEY')
+  BASIC_AUTH_USERNAME = configParser.get('Security', 'BASIC_AUTH_USERNAME')
+  BASIC_AUTH_PASSWORD = configParser.get('Security', 'BASIC_AUTH_PASSWORD')
+  BASIC_AUTH_FORCE = configParser.get('Security', 'BASIC_AUTH_FORCE')
