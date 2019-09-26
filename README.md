@@ -47,7 +47,7 @@ Runs WSGI server accessible from outside on port 5000
 
 ### On linux
 
-Edit config.cfg
+Make config.cfg out of config.cfg.default
 ```
 SECRET_KEY - a key for scrf token
 BASIC_AUTH_USERNAME - authentication username
