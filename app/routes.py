@@ -10,33 +10,35 @@ from config import Config
 @app.route('/tasks/')
 @app.route('/tasks/<task>')
 def tasks(task=None):
-  files = os.listdir(Config.TASKS_PATH)
+  path = Config.TASKS_PATH
+  files = os.listdir(path)
   tasks = None
   if task:
-    with open('tasks.txt', 'r') as f:
+    with open(os.path.join(path, task), 'r') as f:
       tasks = f.readlines()
     timeframes = []
     timeframe = tasks[0]
-    for task in tasks[1:]:
-      if task == '\n':
+    for line in tasks[1:]:
+      if line == '\n':
         timeframes.append(timeframe)
         timeframe = ''
       else:
-        timeframe += task
+        timeframe += line
     timeframes.append(timeframe)
-    return render_template('tasks.html', title='Tasks', timeframes=timeframes, files=files)
+    return render_template('tasks.html', title='Tasks', timeframes=timeframes, files=files, task=task)
   return render_template('tasks.html', title='Tasks', files=files)
 
-@app.route('/edit', methods=['GET', 'POST'])
-def edit_tasks():
+@app.route('/edit/<task>', methods=['GET', 'POST'])
+def edit_tasks(task):
+  path = Config.TASKS_PATH
   form = EditForm()
   if form.validate_on_submit():
     data = form.content.data
-    with open('tasks.txt', 'w') as f:
+    with open(os.path.join(path, task), 'w') as f:
       f.write(data)
-    return redirect(url_for('tasks'))
+    return redirect(url_for('tasks', task=task))
   elif request.method == 'GET':
-    with open('tasks.txt', 'r') as f:
+    with open(os.path.join(path, task), 'r') as f:
       data = f.read()
     form.content.data = data
   return render_template('edit.html', form = form)
