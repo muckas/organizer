@@ -1,9 +1,15 @@
 import os
 import configparser
 
-configParser = configparser.RawConfigParser()
-configFilePath = r'config.cfg'
-configParser.read(configFilePath)
+configParser = configparser.ConfigParser()
+configFile = 'config.ini'
+configDefault = 'config.default'
+if os.path.isfile(configFile):
+  configParser.read(configFile)
+else:
+  configParser.read(configDefault)
+  with open(configFile, 'w') as conf:
+    configParser.write(conf)
 
 class Config(object):
   SECRET_KEY = configParser.get('Settings', 'SECRET_KEY')
