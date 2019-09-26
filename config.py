@@ -16,3 +16,11 @@ class Config(object):
   BASIC_AUTH_USERNAME = configParser.get('Security', 'BASIC_AUTH_USERNAME')
   BASIC_AUTH_PASSWORD = configParser.get('Security', 'BASIC_AUTH_PASSWORD')
   BASIC_AUTH_FORCE = configParser.get('Security', 'BASIC_AUTH_FORCE')
+
+  TASKS_PATH = configParser.get('Content', 'TASKS_PATH')
+
+  def make_path():
+    content = configParser['Content']
+    for folder in content:
+      if not os.path.isdir(content[folder]):
+        os.makedirs(content[folder])

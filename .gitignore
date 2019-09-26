@@ -1,4 +1,5 @@
 __pycache__/
+content/
 tasks.txt
 venv/
 config.ini

@@ -8,4 +8,6 @@ app.config.from_object(Config)
 bootstrap = Bootstrap(app)
 basic_auth = BasicAuth(app)
 
+Config.make_path()
+
 from app import routes
