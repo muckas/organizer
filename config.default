@@ -1,5 +1,8 @@
-[Settings]
+[Security]
 SECRET_KEY = my-secret-key
 BASIC_AUTH_USERNAME = user
 BASIC_AUTH_PASSWORD = pass
 BASIC_AUTH_FORCE = True
+
+[Content]
+TASKS_PATH = content/tasks/
