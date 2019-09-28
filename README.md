@@ -82,3 +82,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 sudo supervisorctl restart organizer
 ```
+
+### Updating to 0.5
+Tasks.txt has been removed in 0.5
+
+Now there can be multiple task lists which are located in content/tasks/.
+So you should move tasks.txt to that folder or make a copy of it via the web-interface
