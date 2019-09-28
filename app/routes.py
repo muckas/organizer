@@ -1,7 +1,7 @@
 import os
 from flask import render_template, redirect, url_for, request
 from app import app
-from app.forms import EditForm, AddForm
+from app.forms import EditForm, AddForm, DelForm
 from config import Config
 
 
@@ -56,6 +56,18 @@ def add_tasks():
   elif request.method == 'GET':
     return render_template('form.html', title='Add list', form=form)
 
+@app.route('/del/<task>', methods=['GET', 'POST'])
+def del_tasks(task):
+  form = DelForm()
+  if form.validate_on_submit():
+    result = form.result.data
+    path = Config.TASKS_PATH
+    if result == 'yes':
+      os.remove(os.path.join(path, task))
+      return redirect(url_for('tasks'))
+    return redirect(url_for('tasks', task=task))
+  elif request.method == 'GET':
+    return render_template('form.html', title=f'Delete {task}?', form=form)
 
 
 

@@ -21,6 +21,9 @@
     <button type="button" class="btn btn-default">
       <a href={{ url_for('add_tasks') }}>New list</a>
     </button>
+    <button type="button" class="btn btn-default">
+      <a href={{ url_for('del_tasks', task=task) }}>Delete list</a>
+    </button>
   </div>
   {% for timeframe in timeframes %}
   <pre>{{ timeframe }}</pre>
