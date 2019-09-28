@@ -1,7 +1,7 @@
 import os
 from flask import render_template, redirect, url_for, request
 from app import app
-from app.forms import EditForm
+from app.forms import EditForm, NewForm
 from config import Config
 
 
@@ -41,4 +41,38 @@ def edit_tasks(task):
     with open(os.path.join(path, task), 'r') as f:
       data = f.read()
     form.content.data = data
-  return render_template('edit.html', form = form)
+  return render_template('edit.html', form=form)
+
+@app.route('/add_tasks', methods=['GET', 'POST'])
+def add_tasks():
+  path = Config.TASKS_PATH
+  form = NewForm()
+  if form.validate_on_submit():
+    name = form.name.data
+    content = form.content.data
+    with open(os.path.join(path, name), 'x') as f:
+      f.write(content)
+    return redirect(url_for('tasks', task=name))
+  elif request.method == 'GET':
+    return render_template('edit.html', form=form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
