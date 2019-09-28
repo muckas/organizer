@@ -17,14 +17,15 @@ def tasks(task=None):
     with open(os.path.join(path, task), 'r') as f:
       tasks = f.readlines()
     timeframes = []
-    timeframe = tasks[0]
-    for line in tasks[1:]:
-      if line == '\n':
-        timeframes.append(timeframe)
-        timeframe = ''
-      else:
-        timeframe += line
-    timeframes.append(timeframe)
+    if len(tasks) > 0:
+      timeframe = tasks[0]
+      for line in tasks[1:]:
+        if line == '\n':
+          timeframes.append(timeframe)
+          timeframe = ''
+        else:
+          timeframe += line
+      timeframes.append(timeframe)
     return render_template('tasks.html', title='Tasks', timeframes=timeframes, files=files, task=task)
   return render_template('tasks.html', title='Tasks', files=files)
 

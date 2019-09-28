@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, RadioField, SelectField
+from wtforms.validators import InputRequired
 
 class EditForm(FlaskForm):
   submit = SubmitField('Submit')
@@ -7,7 +8,7 @@ class EditForm(FlaskForm):
 
 class AddForm(FlaskForm):
   submit = SubmitField('Submit')
-  name = StringField('Name')
+  name = StringField('Name', [InputRequired()])
   content = TextAreaField('', render_kw = {'rows': 12, 'cols': 30})
 
 class DelForm(FlaskForm):
