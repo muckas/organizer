@@ -1,5 +1,5 @@
 # Organizer
-Web interface organizer app
+Web interface organizer app built on [flask](https://palletsprojects.com/p/flask/)
 
 ## Table of contents
 1. [Installation](#installation)
