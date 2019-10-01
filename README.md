@@ -1,6 +1,13 @@
 # Organizer
 Web interface organizer app
 
+## Table of contents
+1. [Installation](#installation)
+2. [Testing](#testing)
+3. [Deployment](#deployment)
+4. [Updating](#updating)
+5. [Notes](#notes)
+
 ## Installation
 
 ### Requirements
@@ -74,7 +81,7 @@ sudo supervisorctl reload
 ```
 Now, after setting up ProxyPass to gunicorn server it's all done
 
-## Deploying updates
+## Updating
 For updating, pull lstest release from master, install pip requirements and restart the app
 ```
 git pull
@@ -82,6 +89,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 sudo supervisorctl restart organizer
 ```
+
+## Notes
 
 ### Updating to 0.5
 Tasks.txt has been removed in 0.5
