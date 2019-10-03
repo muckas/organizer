@@ -9,7 +9,7 @@ from config import Config
 @app.route('/index')
 @app.route('/<folder>/')
 @app.route('/<folder>/<name>')
-def show(folder, name=None):
+def show(folder='tasks', name=None):
   path = Config.CONTENT_PATH
   folders = Config.CONTENT_FOLDERS
   files = os.listdir(os.path.join(path, folder))
