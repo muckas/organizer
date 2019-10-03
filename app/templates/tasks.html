@@ -10,7 +10,7 @@
       </button>
       <ul class="dropdown-menu">
         {% for file in files %}
-        <li><a href={{ url_for('tasks',task=file) }}>{{ file }}</a></li>
+        <li><a href={{ url_for('tasks',name=file) }}>{{ file }}</a></li>
         <li role="separator" class="divider"></li>
         {% endfor %}
       </ul>
@@ -18,17 +18,17 @@
 
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default">
-        <a href={{ url_for('edit_tasks', task=task) }}>Edit list</a>
+        <a href={{ url_for('edit', folder='tasks', name=name) }}>Edit list</a>
       </button>
     </div>
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default">
-        <a href={{ url_for('add_tasks') }}>New list</a>
+        <a href={{ url_for('add', folder='tasks') }}>New list</a>
       </button>
     </div>
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-default">
-        <a href={{ url_for('del_tasks', task=task) }}>Delete list</a>
+        <a href={{ url_for('remove', folder='tasks', name=name) }}>Delete list</a>
       </button>
     </div>
   </div>
