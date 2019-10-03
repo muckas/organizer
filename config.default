@@ -6,3 +6,4 @@ BASIC_AUTH_FORCE = True
 
 [Content]
 TASKS_PATH = content/tasks/
+NOTES_PATH = content/notes/

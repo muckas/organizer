@@ -70,6 +70,19 @@ def del_tasks(task):
   elif request.method == 'GET':
     return render_template('form.html', title=f'Delete {task}?', form=form)
 
+@app.route('/notes/')
+@app.route('/notes/<note>')
+def notes(note=None):
+  path = Config.NOTES_PATH
+  files = os.listdir(path)
+  if note:
+    with open(os.path.join(path, note), 'r') as f:
+      lines = f.readlines()
+    content = ''
+    for line in lines:
+      content += line
+    return render_template('notes.html', title='Notes', content=content, files=files, note=note)
+  return render_template('notes.html', title='Notes', files=files)
 
 
 

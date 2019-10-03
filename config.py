@@ -18,6 +18,7 @@ class Config(object):
   BASIC_AUTH_FORCE = configParser.get('Security', 'BASIC_AUTH_FORCE')
 
   TASKS_PATH = configParser.get('Content', 'TASKS_PATH')
+  NOTES_PATH = configParser.get('Content', 'NOTES_PATH')
 
   def make_path():
     content = configParser['Content']
