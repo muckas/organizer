@@ -14,11 +14,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ url_for('tasks') }}">Ogranizer</a>
+        <a class="navbar-brand" href="{{ url_for('show', folder='tasks') }}">Ogranizer</a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+          {% for folder in folders %}
+            <li><a href="{{ url_for('show', folder=folder) }}">{{ folder.title() }}</a></li>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -32,7 +34,7 @@
     {% if messages %}
     <ul>
       {% for message in messages %}
-      <li>{{ message }}</li>
+        <li>{{ message }}</li>
       {% endfor %}
     </ul>
     {% endif %}
