@@ -5,5 +5,5 @@ BASIC_AUTH_PASSWORD = pass
 BASIC_AUTH_FORCE = True
 
 [Content]
-TASKS_PATH = content/tasks/
-NOTES_PATH = content/notes/
+CONTENT_PATH = content/
+CONTENT_FOLDERS = ['tasks', 'notes']
