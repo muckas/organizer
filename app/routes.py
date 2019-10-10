@@ -35,8 +35,8 @@ def show(folder='tasks', name=None):
         content += line
 
     return render_template('show.html',
-        title=folder.title, content=content, files=files, folders=folders, folder=folder, name=name)
-  return render_template('show.html', title=folder.upper(), folders=folders, folder=folder, files=files)
+        title=folder.title(), content=content, files=files, folders=folders, folder=folder, name=name)
+  return render_template('show.html', title=folder.title(), folders=folders, folder=folder, files=files)
 
 @app.route('/edit/<folder>/<name>', methods=['GET', 'POST'])
 def edit(folder, name):
@@ -80,4 +80,4 @@ def remove(folder, name):
       return redirect(url_for('show', folder=folder))
     return redirect(url_for('show', folder=folder, name=name))
   elif request.method == 'GET':
-    return render_template('form.html', title=f'Delete {name}?', folders=folders,  form=form)
+    return render_template('form.html', title=f'Delete {name}', folders=folders,  form=form)
