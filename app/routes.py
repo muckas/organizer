@@ -5,6 +5,25 @@ from app.forms import EditForm, AddForm, DelForm
 from config import Config
 
 
+def mktask(lines):
+  content = []
+  if len(lines) > 0:
+    timeframe = lines[0]
+    for line in lines[1:]:
+      if line == '\n':
+        content.append(timeframe)
+        timeframe = ''
+      else:
+        timeframe += line
+  content.append(timeframe)
+  return content
+
+def mknote(lines):
+  content = str()
+  for line in lines:
+    content += line
+  return content
+
 @app.route('/')
 @app.route('/index')
 @app.route('/<folder>/')
@@ -13,30 +32,21 @@ def show(folder='tasks', name=None):
   path = Config.CONTENT_PATH
   folders = Config.CONTENT_FOLDERS
   files = os.listdir(os.path.join(path, folder))
+  if not name and len(files) != 0:
+    name = files[0]
   if name:
     with open(os.path.join(path, folder, name), 'r') as f:
       lines = f.readlines()
 
     if folder == 'tasks':
-      content = []
-      if len(lines) > 0:
-        timeframe = lines[0]
-        for line in lines[1:]:
-          if line == '\n':
-            content.append(timeframe)
-            timeframe = ''
-          else:
-            timeframe += line
-      content.append(timeframe)
+      content = mktask(lines)
 
     elif folder == 'notes':
-      content = str()
-      for line in lines:
-        content += line
+      content = mknote(lines)
 
     return render_template('show.html',
-        title=folder.title, content=content, files=files, folders=folders, folder=folder, name=name)
-  return render_template('show.html', title=folder.upper(), folders=folders, folder=folder, files=files)
+        title=folder.title(), content=content, files=files, folders=folders, folder=folder, name=name)
+  return render_template('show.html', title=folder.title(), folders=folders, folder=folder, files=files)
 
 @app.route('/edit/<folder>/<name>', methods=['GET', 'POST'])
 def edit(folder, name):
@@ -80,4 +90,4 @@ def remove(folder, name):
       return redirect(url_for('show', folder=folder))
     return redirect(url_for('show', folder=folder, name=name))
   elif request.method == 'GET':
-    return render_template('form.html', title=f'Delete {name}?', folders=folders,  form=form)
+    return render_template('form.html', title=f'Delete {name}', folders=folders,  form=form)
